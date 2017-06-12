@@ -13,3 +13,5 @@ figure,imshow(K);
 H = fspecial('average', [3 3]);
 L = imfilter(I,H);
 figure, imshow(L);
+M = imgaussfilt(I);
+figure, imshow(M);
