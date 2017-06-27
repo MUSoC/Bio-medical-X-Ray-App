@@ -1,17 +1,26 @@
 clc;
 clear all;
 close all;
-I = imread('sample1.png');
-figure, imshow(I);
-if size(I,3)==3
-    J = rgb2gray(I);
-    figure, imshow(J);
-    I = J;
+
+Image = imread('sample1.png');
+figure, imshow(Image);
+
+%If coloured image, convert it to gray
+if size(Image,3)== 3
+    GrayImage = rgb2gray(Image);
+    figure, imshow(GrayImage);
+    Image = GrayImage;
 end
-K=medfilt2(I);
-figure,imshow(K);
-H = fspecial('average', [3 3]);
-L = imfilter(I,H);
-figure, imshow(L);
-M = imgaussfilt(I);
-figure, imshow(M);
+
+%Median Filter
+MedianFilteredImage = medfilt2(Image);
+figure,imshow(MedianFilteredImage);
+
+%Mean Filter
+MeanFilterWindow = fspecial('average', [3 3]);
+MeanFilteredImage = imfilter(Image,MeanFilterWindow);
+figure, imshow(MeanFilteredImage);
+
+%Gaussian Filter
+GaussianFilteredImage = imgaussfilt(Image);
+figure, imshow(GaussianFilteredImage);
